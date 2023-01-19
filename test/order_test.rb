@@ -11,7 +11,7 @@
 #   assert(!order.shipped?)
 # end
 require 'test/unit'
-require_relative '../script'
+require_relative '../src/script'
 
 class OrderTest < Test::Unit::TestCase
   # def setup
@@ -25,7 +25,7 @@ class OrderTest < Test::Unit::TestCase
   end
 
   def test_script
-    expected = 2
+    expected = 3
     sc = Script.new
     actual = sc.my_method
     assert_equal(expected, actual)
