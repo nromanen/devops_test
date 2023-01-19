@@ -1,1 +1,1 @@
-
+Book = Struct.new('Book', :title, :price)
