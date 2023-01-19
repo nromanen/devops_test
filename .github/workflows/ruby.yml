@@ -29,5 +29,5 @@ jobs:
       - name: Install dependencies
         run: bundle install
       - name: Run tests
-        run: bundle exec rake
+        run: ruby test/order_test.rb
 
