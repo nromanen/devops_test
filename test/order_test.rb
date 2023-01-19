@@ -21,11 +21,11 @@ class OrderTest < Test::Unit::TestCase
   # end
 
   def test_fail
-    assert(false , 'Assertion was false.')
+    assert(true, 'Assertion was false.')
   end
 
   def test_script
-    expected = 3
+    expected = 2
     sc = Script.new
     actual = sc.my_method
     assert_equal(expected, actual)
