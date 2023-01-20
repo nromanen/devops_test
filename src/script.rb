@@ -38,12 +38,13 @@ class GithubApi
   end
 
   def branch(json_obj, branch_name)
-    JSON.parse(json_obj).select{|element| element["name"] == branch_name}
+    JSON.parse(get('branches').body).select{|element| element["name"] == branch_name}
   end
 
   def default_branch
     JSON.parse(get('').body)["default_branch"]
   end
+
   def file_branch(file_name, branch_name)
     return nil if get("contents/#{file_name}?ref=#{branch_name}").code != '200'
     old_uri = @repo_uri
@@ -51,7 +52,6 @@ class GithubApi
     result = get("#{branch_name}/#{file_name}").body
     @repo_uri = old_uri
     result
-    # "download_url": "https://raw.githubusercontent.com/nromanen/pratical_testing_2022/main/CODEOWNERS",
   end
 
   def rules_required_pull_request_reviews(branch_name)
@@ -59,16 +59,10 @@ class GithubApi
     return nil  if response.code != '200'
     JSON.parse(response.body)["required_pull_request_reviews"]
 
-    # obj.get('https://api.github.com/repos/nromanen/pratical_testing_2022/branches/develop/protection', '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').body
-    # "required_pull_request_reviews":{
-    #   "url":"https://api.github.com/repos/nromanen/pratical_testing_2022/branches/develop/protection/required_pull_request_reviews",
-    #   "dismiss_stale_reviews":false,
-    #   "require_code_owner_reviews":false,
-    #   "require_last_push_approval":false,
-    #   "required_approving_review_count":2
-    # },
   end
 
 end
+
+
 
 
