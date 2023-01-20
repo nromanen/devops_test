@@ -10,7 +10,7 @@
 name: Ruby
 
 env:
-    URL: ${{env.URL}}
+    URL: ${{secrets.URL}}
 
 on:
   push:
