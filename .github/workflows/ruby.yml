@@ -11,6 +11,7 @@ name: Ruby
 
 env:
     URL: ${{secrets.URL}}
+    TOKEN: ${{secrets.TOKEN}}
 
 on:
   push:
