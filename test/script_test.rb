@@ -4,9 +4,14 @@ require_relative '../src/script'
 class ScriptTest < Test::Unit::TestCase
 
   def setup
-    url = ENV['URL'].nil? ? '' : ENV["URL"]
-    token = ENV['TOKEN'].nil? ? '' : ENV["TOKEN"]
+    url = ENV['URL'].nil? ? 'https://api.github.com/repos/nromanen/pratical_testing_2022' : ENV["URL"]
+    token = ENV['TOKEN'].nil? ? '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' : ENV["TOKEN"]
     @obj = GithubApi.new(url, token)
+  end
+
+  def test_helth_check
+    assert_not_nil(@obj.instance_variable_get('@repo_uri'), 'Url alive')
+    assert_not_nil(@obj.instance_variable_get('@token'), 'Token alive')
   end
 
   def test_main_present
