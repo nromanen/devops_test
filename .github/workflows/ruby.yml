@@ -9,6 +9,9 @@
 
 name: Ruby
 
+env:
+    URL: ${{env.URL}}
+
 on:
   push:
     branches: [ main ]
