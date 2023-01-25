@@ -42,7 +42,7 @@ class ScriptTest < Test::Unit::TestCase
 
   def test_codeowners_contains_user
     user_name = 'online-marathon'
-    content = @obj.file_branch('CODEOWNERS', 'main')
+    content = @obj.file_branch('CODEOWNERS', 'main') || @obj.file_branch('.github/CODEOWNERS', 'main')
     assert_not_nil(content, 'File CODEOWNERS doesn\'t exist on main branch')
     assert(content.include?(user_name), "User #{user_name} doesn't present in CODEOWNERS")
   end
